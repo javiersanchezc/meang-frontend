@@ -1,29 +1,22 @@
-import { AdminComponent } from './admin.component';
-import { AdminModule } from './admin.module';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
+import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
-{
-  path:'admin',
-  component: AdminComponent,
-  children:
-  [
-    {
-      path:'',loadChildren:()=>
-      import('./dashboard/dashboard.module').then(m=>m.DashboardModule)
-    },
-    
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
       {
-        path:'users',loadChildren:()=>
-        import('./users/users.module').then(m=>m.UsersModule)
+        path: '',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       }
-   
-
-    
-  ]
-}
+    ]
+  }
 ];
 
 @NgModule({

@@ -1,23 +1,21 @@
-import { PublicComponent } from './public.component';
-import { PublicModule } from './public.module';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { PublicComponent } from './public.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:PublicComponent,
-    children:[
+    path: '',
+    component: PublicComponent,
+    children: [
       {
-        path:'home',loadChildren:()=>
-        import('./home/home.module').then(m=>m.HomeModule)
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
-        path:'contact',loadChildren:()=>
-        import('./contact/contact.module').then(m=>m.ContactModule)
-      }
+        path: 'contact',
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+      },
     ]
-
   }
 ];
 
