@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
   toggledValue = true;
-  toggled($event:any) {
+  toggled($event) {
     console.log('admin', $event);
     this.toggledValue = $event;
   }
